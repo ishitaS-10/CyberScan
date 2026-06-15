@@ -1,0 +1,40 @@
+body {
+    background: black;
+    color: #00ffcc;
+    font-family: monospace;
+}
+
+.container {
+    width: 500px;
+    margin: 60px auto;
+    background: #111;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #00ffcc;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    background: black;
+    color: #00ffcc;
+    border: 1px solid #00ffcc;
+}
+
+button {
+    padding: 10px;
+    background: #00ffcc;
+    border: none;
+    cursor: pointer;
+}
+
+.loader {
+    display: none;
+    margin-top: 10px;
+    color: yellow;
+}
+
+.Low { color: green; }
+.Medium { color: orange; }
+.High { color: red; }

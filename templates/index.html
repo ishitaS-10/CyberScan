@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Elite Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>💀 Elite Vulnerability Scanner</h2>
+
+    <form method="POST" onsubmit="showLoader()">
+        <input type="text" name="target" placeholder="example.com" required>
+        <button type="submit">Scan Target</button>
+    </form>
+
+    <div id="loader" class="loader">Scanning...</div>
+
+    {% if result %}
+    <div class="report">
+
+        <p><strong>Server:</strong> {{ result.server }}</p>
+        <p><strong>Score:</strong> {{ result.score }}</p>
+        <p class="risk {{ result.risk }}">{{ result.risk }} Risk</p>
+
+        <h4>Open Ports</h4>
+        <ul>
+            {% for p in result.ports %}
+                <li>{{ p }}</li>
+            {% endfor %}
+        </ul>
+
+        <h4>Subdomains</h4>
+        <ul>
+            {% for s in result.subs %}
+                <li>{{ s }}</li>
+            {% endfor %}
+        </ul>
+
+        <h4>Issues</h4>
+        <ul>
+            {% for i, level in result.issues %}
+                <li>{{ i }} - <span class="{{ level }}">{{ level }}</span></li>
+            {% endfor %}
+        </ul>
+
+    </div>
+    {% endif %}
+
+</div>
+
+<script>
+function showLoader(){
+    document.getElementById("loader").style.display = "block";
+}
+</script>
+
+</body>
+</html>
